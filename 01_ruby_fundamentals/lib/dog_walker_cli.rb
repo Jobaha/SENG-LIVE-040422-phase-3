@@ -9,7 +9,14 @@ end
 # At any time, type "menu" to see these options again or "exit" to
 # leave the program
 
-
+def print_menu_options
+  puts "Hi there, this is the menu!"
+  puts " 1. List all dogs"
+  puts " 2. Add a dog"
+  puts "Please choose the number matching your choice."
+  puts 'At any time, type "menu" to see these options
+  again or exit to leave the program'
+end
 
 
 # define a method `ask_for_choice` which prompts the user for input
@@ -17,7 +24,14 @@ end
 # for using the CLI and invoke exit to terminate the program
 # otherwise, return whatever the user typed in
 
-
+def ask_for_choice
+  input = gets.chomp
+  if input == "exit"
+    puts "Thanks for using the Dog Walker CLI!".green
+    exit
+  end
+  input
+end
 
 # define a `print_dog` method that accepts a dog hash as a parameter
 # and prints out the dog's details that looks like this:
@@ -30,12 +44,23 @@ Lennon Snow
 
 =end
 
+def print_dog(dog_hash)
+  puts dog_hash[:name].green
+  puts " Age: #{dog_hash[:age]}"
+  puts " Breed: #{dog_hash[:breed]} "
+  puts " Image Url: #{dog_hash[:image_url]}" 
+end
 
 
 
 # define a method `list_dogs` that will iterate over an array of
 # dog hashes and call print_dog on each one.
 
+def list_dogs(dogs)
+  dogs.each do |dog_hash|
+    print_dog(dog_hash)
+  end
+end
 
 
 # define an `add_dog` method which accepts an array of dog
